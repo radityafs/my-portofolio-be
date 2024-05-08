@@ -132,7 +132,7 @@ export const getProject = async (req: Request, res: Response) => {
 };
 
 export const updateProjects = async (req: Request, res: Response) => {
-  let { name, description, images, url, type, stacks } = req.body;
+  let { name, description, images = [], url, type, stacks = [] } = req.body;
   let { id } = req.params;
 
   try {
@@ -145,7 +145,7 @@ export const updateProjects = async (req: Request, res: Response) => {
       },
     });
 
-    if (images) {
+    if (images.length > 0) {
       await prisma.projectImage.deleteMany({
         where: {
           projectId: project.id,
@@ -164,7 +164,7 @@ export const updateProjects = async (req: Request, res: Response) => {
       });
     }
 
-    if (stacks) {
+    if (stacks.length > 0) {
       const stackJson = JSON.parse(stacks);
 
       const stackProject = await prisma.stack.findMany({
@@ -182,9 +182,11 @@ export const updateProjects = async (req: Request, res: Response) => {
         data: {
           stacks: {
             deleteMany: {},
-            set: stackProject.map((stack: any) => ({
-              id: stack.id,
-            })),
+            createMany: {
+              data: stackProject.map((stack: any) => ({
+                stackId: stack.id,
+              })),
+            },
           },
         },
       });
