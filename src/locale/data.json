@@ -1,0 +1,128 @@
+{
+  "about": "<p class='text-lg leading-relaxed'>I'm a final year informatics engineering student at<a href='https://www.uns.ac.id/' class='text-blue-400 hover:underline'>Universitas Sebelas Maret.</a> Currently Working as a Full Stack Developer at<a href='https://elnusa.co.id/' class='text-blue-400 hover:underline'>PT. Elnusa Tbk</a></p>",
+  "achievement": [
+    {
+      "title": "1st Place Mobile App Competition",
+      "description": "Become the 1st place in Mobile App Competition at Magic Camp 2023 Held by Himpunan Mahasiswa Manajemen Administrasi Universitas Sebelas Maret"
+    },
+    {
+      "title": "Finalist Innovative Tech Competition",
+      "description": "Become the finalist in Innovative Tech Competition at Ifest Comp 2022 Held by Himpunan Mahasiswa Informatika Universitas Padjajaran"
+    },
+    {
+      "title": "1st Place Business Plan Competition",
+      "description": "Become the 1st place in Business Plan Competition at Smart IT Fest 2022 Held by Himpunan Mahasiswa D3 Teknik Informatika Universitas Sebelas Maret"
+    },
+    {
+      "title": "2nd Place Web Development Competition",
+      "description": "Become the 2nd place in Web Development Competition at Smart Inotek Comp 2022 Held by Himpunan Mahasiswa D3 Teknik Informatika PSDKU Universitas Sebelas Maret"
+    }
+  ],
+  "contact": "https://api.whatsapp.com/send/?phone=%2B628123225487w",
+  "header": "<h1 class='text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight'>Hello, I'm <span class='bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500'>Raditya Firman Syaputra</span>, <br>final year informatics engineering student<br>who passionate in <span class='bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-blue-500'>software development</span>,<br>willing to learn and do hard work.</h1>",
+  "socials": [
+    {
+      "name": "linkedin",
+      "url": "https://www.linkedin.com/in/raditya-firman-syaputra-7b7b3b1b0/",
+      "icon": "linkedin"
+    },
+    {
+      "name": "github",
+      "url": "https://github.com/fahminlb33/ritsu-pi",
+      "icon": "github"
+    },
+    {
+      "name": "instagram",
+      "url": "https://www.instagram.com/fahminlb33/",
+      "icon": "instagram"
+    }
+  ],
+  "stack": {
+    "languages": [
+      {
+        "name": "PHP",
+        "icon": "https://img.icons8.com/color/48/000000/php.png"
+      },
+      {
+        "name": "JavaScript",
+        "icon": "https://img.icons8.com/color/48/000000/javascript.png"
+      },
+      {
+        "name": "HTML",
+        "icon": "https://img.icons8.com/color/48/000000/html-5.png"
+      },
+      {
+        "name": "CSS",
+        "icon": "https://img.icons8.com/color/48/000000/css3.png"
+      }
+    ],
+    "tools": [
+      {
+        "name": "Laravel",
+        "icon": "https://img.icons8.com/ios-filled/50/000000/laravel.png"
+      },
+      {
+        "name": "Vue.js",
+        "icon": "https://img.icons8.com/color/48/000000/vue-js.png"
+      },
+      {
+        "name": "Tailwind CSS",
+        "icon": "https://img.icons8.com/color/48/000000/tailwind-css.png"
+      },
+      {
+        "name": "MySQL",
+        "icon": "https://img.icons8.com/color/48/000000/mysql-logo.png"
+      },
+      {
+        "name": "Git",
+        "icon": "https://img.icons8.com/color/48/000000/git.png"
+      }
+    ]
+  },
+  "testimonials": [
+    {
+      "name": "John Doe",
+      "ohoto": "https://randomuser.me/api/portraits",
+      "position": "CEO of Company",
+      "contact": "https://api.whatsapp.com/send/?phone=%2B6281232254875",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      "name": "Jane Doe",
+      "ohoto": "https://randomuser.me/api/portraits",
+      "position": "CTO of Company",
+      "contact": "https://api.whatsapp.com/send/?phone=%2B6281232254875",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    }
+  ],
+  "workExperience": [
+    {
+      "title": "Full Stack Developer",
+      "company": "PT. Elnusa Tbk",
+      "type": "Full-time",
+      "date": "June 2021 - Present",
+      "description": "Developing and maintaining web applications for internal use, using Laravel and Vue.js"
+    },
+    {
+      "title": "Full Stack Developer",
+      "company": "PT. Baracipta Esa Engineering",
+      "type": "Internship",
+      "date": "August 2023 - Desember 2023",
+      "description": "Interned as a full-stack developer at PT. Baracipta Esa Engineering as part of MSIB Kampus Merdeka program. a construction company that provides services in the construction sector. I was responsible for developing and maintaining the company's product Estimator.ID."
+    },
+    {
+      "title": "Software Developer",
+      "company": "UPT TIK Universitas Sebelas Maret",
+      "type": "Internship",
+      "date": "January 2023 - September 2023",
+      "description": "Interned as a software developer at UPT TIK Universitas Sebelas Maret. I was responsible for helping internal team for collecting data and maintaining application"
+    },
+    {
+      "title": "Full Stack Developer",
+      "company": "PT. Upcolab",
+      "type": "Internship",
+      "date": "Desember 2023 - Present",
+      "description": "Worked as a Full-stack Developer at PT. Upcolab, a company that provides services in the digital marketing sector. I was responsible for developing Android applications specifically for the company's clients."
+    }
+  ]
+}
