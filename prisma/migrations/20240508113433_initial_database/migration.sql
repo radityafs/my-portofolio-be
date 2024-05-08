@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE `User` (
-    `id` BIGINT NOT NULL AUTO_INCREMENT,
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
     `uid` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NOT NULL,
     `email` VARCHAR(191) NOT NULL,
@@ -16,104 +16,64 @@ CREATE TABLE `User` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `SocialMedia` (
-    `id` BIGINT NOT NULL AUTO_INCREMENT,
-    `uid` VARCHAR(191) NOT NULL,
-    `name` VARCHAR(191) NOT NULL,
-    `icon` VARCHAR(191) NOT NULL,
-    `url` VARCHAR(191) NOT NULL,
-    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-    `updatedAt` DATETIME(3) NOT NULL,
-
-    UNIQUE INDEX `SocialMedia_uid_key`(`uid`),
-    INDEX `SocialMedia_uid_idx`(`uid`),
-    PRIMARY KEY (`id`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- CreateTable
-CREATE TABLE `Testimonial` (
-    `id` BIGINT NOT NULL AUTO_INCREMENT,
-    `uid` VARCHAR(191) NOT NULL,
-    `name` VARCHAR(191) NOT NULL,
-    `image` VARCHAR(191) NOT NULL,
-    `position` VARCHAR(191) NOT NULL,
-    `email` VARCHAR(191) NOT NULL,
-    `content` TEXT NOT NULL,
-    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-    `updatedAt` DATETIME(3) NOT NULL,
-
-    UNIQUE INDEX `Testimonial_uid_key`(`uid`),
-    INDEX `Testimonial_uid_idx`(`uid`),
-    PRIMARY KEY (`id`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- CreateTable
 CREATE TABLE `Article` (
-    `id` BIGINT NOT NULL AUTO_INCREMENT,
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
     `uid` VARCHAR(191) NOT NULL,
     `slug` VARCHAR(191) NOT NULL,
+    `image` VARCHAR(191) NOT NULL,
     `title` VARCHAR(191) NOT NULL,
     `content` TEXT NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,
 
     UNIQUE INDEX `Article_uid_key`(`uid`),
+    UNIQUE INDEX `Article_slug_key`(`slug`),
     INDEX `Article_uid_idx`(`uid`),
+    INDEX `Article_slug_idx`(`slug`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
 CREATE TABLE `Project` (
-    `id` BIGINT NOT NULL AUTO_INCREMENT,
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
     `uid` VARCHAR(191) NOT NULL,
     `slug` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NOT NULL,
-    `image` VARCHAR(191) NOT NULL,
     `url` VARCHAR(191) NOT NULL,
     `description` TEXT NOT NULL,
-    `typeId` BIGINT NOT NULL,
+    `type` ENUM('ANDROID', 'WEB', 'IOS', 'DESKTOP', 'IOT', 'OTHER') NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,
 
     UNIQUE INDEX `Project_uid_key`(`uid`),
+    UNIQUE INDEX `Project_slug_key`(`slug`),
     INDEX `Project_uid_idx`(`uid`),
-    PRIMARY KEY (`id`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- CreateTable
-CREATE TABLE `ProjectType` (
-    `id` BIGINT NOT NULL AUTO_INCREMENT,
-    `uid` VARCHAR(191) NOT NULL,
-    `name` VARCHAR(191) NOT NULL,
-    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-    `updatedAt` DATETIME(3) NOT NULL,
-
-    UNIQUE INDEX `ProjectType_uid_key`(`uid`),
-    INDEX `ProjectType_uid_idx`(`uid`),
+    INDEX `Project_slug_idx`(`slug`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
 CREATE TABLE `Stack` (
-    `id` BIGINT NOT NULL AUTO_INCREMENT,
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
     `uid` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NOT NULL,
     `image` VARCHAR(191) NOT NULL,
+    `type` ENUM('LANGUAGE', 'FRAMEWORK', 'DATABASE', 'PLATFORM', 'LIBRARY', 'OTHER') NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,
 
     UNIQUE INDEX `Stack_uid_key`(`uid`),
+    UNIQUE INDEX `Stack_name_key`(`name`),
     INDEX `Stack_uid_idx`(`uid`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
 CREATE TABLE `ProjectStack` (
-    `id` BIGINT NOT NULL AUTO_INCREMENT,
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
     `uid` VARCHAR(191) NOT NULL,
-    `projectId` BIGINT NOT NULL,
-    `stackId` BIGINT NOT NULL,
-    `type` ENUM('LANGUAGE', 'FRAMEWORK', 'DATABASE', 'PLATFORM', 'LIBRARY', 'OTHER') NOT NULL,
+    `projectId` INTEGER NOT NULL,
+    `stackId` INTEGER NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,
 
@@ -126,9 +86,9 @@ CREATE TABLE `ProjectStack` (
 
 -- CreateTable
 CREATE TABLE `ProjectImage` (
-    `id` BIGINT NOT NULL AUTO_INCREMENT,
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
     `uid` VARCHAR(191) NOT NULL,
-    `projectId` BIGINT NOT NULL,
+    `projectId` INTEGER NOT NULL,
     `image` VARCHAR(191) NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,
@@ -140,13 +100,10 @@ CREATE TABLE `ProjectImage` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
-ALTER TABLE `Project` ADD CONSTRAINT `Project_typeId_fkey` FOREIGN KEY (`typeId`) REFERENCES `ProjectType`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `ProjectStack` ADD CONSTRAINT `ProjectStack_projectId_fkey` FOREIGN KEY (`projectId`) REFERENCES `Project`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `ProjectStack` ADD CONSTRAINT `ProjectStack_projectId_fkey` FOREIGN KEY (`projectId`) REFERENCES `Project`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `ProjectStack` ADD CONSTRAINT `ProjectStack_stackId_fkey` FOREIGN KEY (`stackId`) REFERENCES `Stack`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `ProjectStack` ADD CONSTRAINT `ProjectStack_stackId_fkey` FOREIGN KEY (`stackId`) REFERENCES `Stack`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `ProjectImage` ADD CONSTRAINT `ProjectImage_projectId_fkey` FOREIGN KEY (`projectId`) REFERENCES `Project`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `ProjectImage` ADD CONSTRAINT `ProjectImage_projectId_fkey` FOREIGN KEY (`projectId`) REFERENCES `Project`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
